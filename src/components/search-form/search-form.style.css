@@ -1,0 +1,27 @@
+.search-form {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  margin: 0.5rem auto;
+}
+
+.form {
+  width: 100%;
+}
+
+.form input {
+  text-align: center;
+  border: 1px dotted black;
+  padding: 0.1rem;
+  width: 90%;
+  outline: lightgrey;
+}
+
+@media only screen and (max-width: 800px) {
+  .form input {
+    font-size: 0.8rem;
+  }
+}

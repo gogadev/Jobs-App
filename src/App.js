@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+import Header from "./components/header/Header";
+import SearchForm from "./components/search-form/SearchForm";
+import JobsPagination from "./components/jobs-pagination/JobsPagination";
+import UseFetchJobs from "./components/use-fetch-jobs/UseFetchJobs";
+import Job from "./components/job/Job";
+
+import loadingImg from "./assets/loading.gif";
+
+import "./App.css";
+
+const App = () => {
+  const [params, setParams] = useState({});
+  const [page, setPage] = useState(1);
+  const { jobs, loading, error, hasNextPage } = UseFetchJobs(params, page);
+
+  const handleParamChange = (e) => {
+    const param = e.target.name;
+    const value = e.target.value;
+    setPage(1);
+    setParams((prevParams) => {
+      return { ...prevParams, [param]: value };
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Header />
+      <SearchForm params={params} onParamChange={handleParamChange} />
+      <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
+      {loading && (
+        <div className="spinner">
+          <img className="loading-img" src={loadingImg} alt="" />
+        </div>
+      )}
+      {error && <h1>Error.Try Refreshing</h1>}
+      <div className="container">
+        {jobs.map((job) => {
+          return <Job key={job.id} job={job} />;
+        })}
+      </div>
+      <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
+    </React.Fragment>
   );
-}
+};
 
 export default App;

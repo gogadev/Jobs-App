@@ -1,0 +1,92 @@
+.card {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem;
+  text-align: center;
+  background: whitesmoke;
+}
+
+.job-title {
+  background: rgba(197, 223, 240, 0.63);
+  width: 72.2vw;
+  padding: 0.1rem;
+  border-radius: 5px;
+}
+
+.company {
+  opacity: 0.8;
+  transform: skew(-10deg);
+}
+
+.badge {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  border-top: 1px dotted lightgrey;
+  border-bottom: 1px dotted lightgrey;
+  padding-top: 0.7rem;
+}
+
+.type,
+.location {
+  background: rgba(206, 206, 243, 0.685);
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  text-transform: capitalize;
+}
+
+.date {
+  font-size: 1rem;
+}
+
+.company-logo {
+  width: 100%;
+}
+
+.logo {
+  width: 8%;
+}
+
+.detail {
+  display: flex;
+  justify-content: center;
+  margin: 0.8rem auto;
+  border: 1px dotted blue;
+  padding: 0.1rem;
+}
+
+.detail a {
+  transform: skew(-15deg);
+}
+
+.btn {
+  display: flex;
+  margin: 0.3rem auto;
+  text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .job-title {
+    font-size: 1.2rem;
+  }
+  .badge {
+    border: 1px dotted lightgrey;
+  }
+  .type,
+  .location {
+    font-size: 1rem;
+  }
+
+  .detail {
+    width: 80%;
+    font-size: 0.8rem;
+    padding: 0.1rem 0.3rem;
+  }
+  .logo {
+    width: 20%;
+  }
+}
